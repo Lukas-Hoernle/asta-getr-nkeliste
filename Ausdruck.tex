@@ -1,0 +1,79 @@
+\documentclass[a4paper,landscape]{article}
+\usepackage[utf8]{inputenc}
+\usepackage[margin=0cm,top=1cm,bottom=1cm,noheadfoot]{geometry}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{anyfontsize}
+\usepackage{csvsimple}
+\usepackage[table,xcdraw]{xcolor}
+
+\renewcommand{\arraystretch}{1.0}
+
+% Die Tabelle soll die gesamte Seitenbreite nutzen
+\newcolumntype{L}[1]{>{\raggedright\arraybackslash}p{#1}}
+\newcolumntype{C}[1]{>{\centering\arraybackslash}p{#1}}
+
+% Zeilenfarben definieren
+\definecolor{gray!20}{rgb}{0.9,0.9,0.9} % Hellgrau
+
+\begin{document}
+
+\fontsize{14}{17}\selectfont  
+
+\section*{Getränkeliste vom 09.08.2024}
+
+\textbf{So funktioniert's:} Getränk aus dem Kühlschrank nehmen und Geld in die rote Kasse rechts im Regal schmeißen. Wenn du öfter da bist, kannst du stattdessen auch deinen Vor- und Nachnamen sowie E-Mail-Adresse unten auf der Liste eintragen und dann einen Strich bei dem Getränk machen. Du bekommst dann bei der Abrechnung eine E-Mail/Nachricht und zahlst dann per Überweisung oder Paypal. Fragen oder Anregungen kannst du gerne an getraenke@asta-karlsruhe.de schicken.
+
+\textbf{Liste aufgehängt am 09.08.2024, und abgehängt am:}
+
+\textbf{Bei 4 oder weniger Flaschen von einer Sorte, bitte den Kühlschrank auffüllen. Pro-Tipp: Namen auf die Flasche schreiben}
+
+% Tabelle
+\begin{longtable}{|L{6cm}|L{12cm}|C{3cm}|C{3cm}|}
+\hline
+\textbf{Name} & \textbf{Getränk (0,33/0,5l) 1 €} & \textbf{Pizza 2 €} & \textbf{Wasser + Eis 0,50 €} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Name} & \textbf{Getränk (0,33/0,5l) 1 €} & \textbf{Pizza 2 €} & \textbf{Wasser + Eis 0,50 €} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+\rowcolors{2}{gray!20}{white}  % Hellgrau für jede zweite Zeile (doesn't work) 
+\csvreader[head to column names, 
+           late after line=\\\hline]%
+           {names.csv}{}{%
+    \csvcoli & & & %
+}
+\end{longtable}
+
+\vspace{1cm}
+
+\textbf{Platz für neue Menschen (E-Mail-Adresse bitte nicht vergessen)}
+
+\begin{longtable}{|L{6cm}|L{12cm}|C{3cm}|C{3cm}|}
+\hline
+\textbf{Vor- und Nachname} & \textbf{E-Mail-Adresse (bitte lesbar schreiben)} & \textbf{Getränk (0,33/0,5l) 1 €} & \textbf{Pizza 2 €} \\
+\hline
+\endfirsthead
+\hline
+\textbf{Vor- und Nachname} & \textbf{E-Mail-Adresse (bitte lesbar schreiben)} & \textbf{Getränk (0,33/0,5l) 1 €} & \textbf{Pizza 2 €} \\
+\hline
+\endhead
+\hline
+\endfoot
+\hline
+\endlastfoot
+\rowcolors{2}{gray!20}{white}  % Hellgrau für jede zweite Zeile (doesn't work) 
+& & & \\
+\hline
+& & & \\
+\hline
+& & & \\
+\hline
+\end{longtable}
+
+\end{document}
